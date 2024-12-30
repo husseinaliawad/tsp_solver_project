@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSP Solver</title>
+</head>
+<body>
+    <h1>Traveling Salesman Problem Solver</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="locations">Locations (comma-separated):</label><br>
+        <textarea id="locations" name="locations" rows="3" cols="50" placeholder="Enter locations (e.g., A,B,C,D)"></textarea><br><br>
+
+        <label for="distances">Distance Matrix (row by row, comma-separated):</label><br>
+        <textarea id="distances" name="distances" rows="5" cols="50" placeholder="Enter distance matrix"></textarea><br><br>
+
+        <button type="submit">Solve</button>
+    </form>
+
+    {% if result %}
+        {% if result.error %}
+            <h2>Error:</h2>
+            <p>{{ result.error }}</p>
+        {% else %}
+            <h2>Result:</h2>
+            <p><strong>Optimal Path:</strong> {{ result.path }}</p>
+            <p><strong>Total Cost:</strong> {{ result.cost }}</p>
+            <h3>Graph:</h3>
+            <img src="data:image/png;base64,{{ graph_base64 }}" alt="TSP Graph" style="max-width: 100%; height: auto;">
+        {% endif %}
+    {% endif %}
+</body>
+</html>

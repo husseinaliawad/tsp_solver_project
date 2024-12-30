@@ -1,0 +1,30 @@
+# Python-specific files
+*.pyc
+*.pyo
+__pycache__/
+*.log
+
+# Virtual environment
+venv/
+env/
+
+# Django database
+db.sqlite3
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# Python package files
+*.egg-info/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.idea
